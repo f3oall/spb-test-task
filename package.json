@@ -5,10 +5,11 @@
   "author": "David Yunevich <f3oall@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "dev":
+      "webpack-dev-server --inline --progress  --config build/webpack.dev.conf.js",
+    "start": "yarn run dev",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run e2e",
+    "test": "yarn run e2e",
     "lint": "eslint --ext .js,.vue src test/e2e/specs",
     "build": "node build/build.js"
   },
@@ -72,9 +73,5 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
