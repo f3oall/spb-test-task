@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="brand">Fraction Calculator</div>
       <nav>
-        <router-link to="/">Home</router-link>
+        <router-link to="/" exact>Home</router-link>
         <router-link to="/comments">Comments</router-link>
       </nav>
     </div>
@@ -28,10 +28,25 @@ header {
     grid-template-columns: $grid * 30 1fr;
   }
   nav {
-    text-align: right;
+    display: grid;
+    grid-template-columns: repeat(2, #{$grid * 15});
+    justify-content: flex-end;
     a {
-      display: inline-block;
+      text-align: center;
       padding: 0 $grid * 2;
+      color: $muted-font-color;
+      border-right: $border;
+      &:first-child {
+        border-left: $border;
+      }
+      &:hover {
+        color: $success-color;
+      }
+      &.router-link-active {
+        background: $success-color;
+        border-color: $success-color;
+        color: #fff;
+      }
     }
   }
   .brand {
