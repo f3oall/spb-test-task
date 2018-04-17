@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+    <site-header/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import SiteHeader from '@/components/site-header'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { SiteHeader }
 }
 </script>
 

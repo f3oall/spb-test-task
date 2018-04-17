@@ -4,4 +4,20 @@
   -moz-osx-font-smoothing: grayscale;
   color: $font-color;
   font-size: $font-size;
+  background: $primary-background;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a,
+a:focus,
+a:hover {
+  text-decoration: none;
+  color: $success-color;
+}
+a:hover {
+  color: darken($success-color, 10%);
 }

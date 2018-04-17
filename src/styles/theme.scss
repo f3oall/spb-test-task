@@ -1,9 +1,30 @@
+// Grid
+$grid: 8px;
+
 // Colors
 $font-color: #333;
 $secondary-font-color: #666;
 $muted-font-color: #999;
 $disabled-font-color: #ccc;
 
+$border-color: #ececec;
+
+$primary-background: #fff;
+$secondary-background: #fafafa;
+
+$success-color: #42b983;
+
 // Font
 $font-family: 'Trebushet MS', Helvetica, Arial, sans-serif;
 $font-size: 14px;
+$font-size-big: 16px;
+$font-size-large: 24px;
+
+// Borders
+$border-style: solid;
+$border-width: 1px;
+
+$border: $border-width $border-style $border-color;
+
+// Header
+$header-height: 60px;
