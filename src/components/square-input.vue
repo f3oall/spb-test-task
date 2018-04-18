@@ -26,10 +26,12 @@ export default {
     isSign(charCode) {
       return [42, 43, 45, 47].includes(charCode)
     },
+    isValidNumber(charCode) {
+      return this.isNumber(charCode) && !this.isFirstZero(charCode)
+    },
     validate(e) {
-      if (this.type == 'number') {
-        if (this.isNumber(e.charCode) && !this.isFirstZero(e.charCode))
-          return true
+      if (this.type === 'number') {
+        if (this.isValidNumber(e.charCode)) return true
       } else {
         if (this.isSign(e.charCode)) return true
       }
