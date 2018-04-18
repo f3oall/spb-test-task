@@ -1,5 +1,5 @@
 <template>
-  <input type="text" class="square-input" :value="value" @input="$emit('input', $event.target.value)">
+  <input type="text" class="square-input" :value="value" @input="$emit('input', $event.target.value)" @keypress="validate">
 </template>
 
 <script>
@@ -13,6 +13,27 @@ export default {
     type: {
       type: String,
       required: true
+    }
+  },
+
+  methods: {
+    isFirstZero(charCode) {
+      return this.value === '' && charCode === 48
+    },
+    isNumber(charCode) {
+      return charCode >= 48 && charCode <= 56
+    },
+    isSign(charCode) {
+      return [42, 43, 45, 47].includes(charCode)
+    },
+    validate(e) {
+      if (this.type == 'number') {
+        if (this.isNumber(e.charCode) && !this.isFirstZero(e.charCode))
+          return true
+      } else {
+        if (this.isSign(e.charCode)) return true
+      }
+      e.preventDefault()
     }
   }
 }

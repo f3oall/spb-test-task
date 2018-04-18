@@ -7,6 +7,7 @@ $result-width: $grid * 10;
     padding: $grid * 4;
     display: flex;
     align-items: center;
+    overflow-x: auto;
   }
   .fraction {
     display: flex;
@@ -14,10 +15,22 @@ $result-width: $grid * 10;
     align-items: center;
     padding: 0 $grid * 1;
     margin-right: $grid * 4;
+    position: relative;
     .bar {
       width: calc(100% + #{$grid * 2});
       margin: $grid $grid * -1;
       border-bottom: 2px solid $border-color;
+    }
+    .close {
+      position: absolute;
+      right: -$grid * 1.5;
+      top: -$grid * 3;
+      font-size: 26px;
+      color: #ededed;
+      cursor: pointer;
+      &:hover {
+        color: red;
+      }
     }
     &.result {
       .numerator,
