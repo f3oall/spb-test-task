@@ -1,0 +1,13 @@
+.btn {
+  cursor: pointer;
+  border: $border;
+  line-height: $button-height;
+  background: $secondary-background;
+  color: $muted-font-color;
+  padding: $button-padding;
+  transition: all 0.2s ease-out;
+  &:hover {
+    background: $success-color;
+    color: #fff;
+  }
+}

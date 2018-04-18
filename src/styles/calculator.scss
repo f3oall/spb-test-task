@@ -1,0 +1,49 @@
+$result-width: $grid * 10;
+
+.calculator {
+  margin-top: $grid * 8;
+  .expression {
+    border: 2px dashed $border-color;
+    padding: $grid * 4;
+    display: flex;
+    align-items: center;
+  }
+  .fraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 $grid * 1;
+    margin-right: $grid * 4;
+    .bar {
+      width: calc(100% + #{$grid * 2});
+      margin: $grid $grid * -1;
+      border-bottom: 2px solid $border-color;
+    }
+    &.result {
+      .numerator,
+      .denominator {
+        min-width: $grid * 5;
+        min-height: $grid * 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-size-big;
+        font-weight: bold;
+        color: $muted-font-color;
+      }
+    }
+  }
+  .sign {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    margin-right: $grid * 4;
+    text-align: center;
+  }
+  .buttons {
+    margin-top: $grid * 5;
+    .btn {
+      min-width: $grid * 30;
+    }
+  }
+}
