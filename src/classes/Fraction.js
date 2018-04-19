@@ -1,8 +1,9 @@
-import { Fraction } from 'fractional'
-export default class {
+import { Fraction as Fractional } from 'fractional'
+import Brackets from './Brackets'
+export default class Fraction {
   constructor(str, sign = null) {
     if (str) {
-      this.value = new Fraction(...str.split(':'))
+      this.value = new Fractional(...str.split(':'))
     } else {
       this.value = {
         numerator: '',
@@ -10,18 +11,19 @@ export default class {
       }
     }
     if (sign) this.sign = sign
-    this.brackets = {
-      left: false,
-      right: false
-    }
+    this.brackets = new Brackets()
   }
   toString() {
     let str = ''
-    if (this.brackets.left) str += '('
+    if (this.brackets.left[0]) str += this.brackets.toString('left')
     str += `${this.value.numerator}:${this.value.denominator}`
-    if (this.brackets.right) str += ')'
+    if (this.brackets.right[0]) str += this.brackets.toString('right')
     if (this.sign) str += this.sign
     return str
+  }
+  compute(fraction) {
+    let res = this.value[this.action](fraction.value)
+    return new Fraction(`${res.numerator}:${res.denominator}`, fraction.sign)
   }
 
   get isFilled() {
@@ -29,28 +31,22 @@ export default class {
       return (
         this.value.numerator !== '' &&
         this.value.denominator !== '' &&
-        this.sign
+        this.sign !== ''
       )
     }
     return this.value.numerator !== '' && this.value.denominator !== ''
   }
-  setBracket(pos) {
-    this.brackets[pos] = !this.brackets[pos]
-    return this.brackets[pos] ? 1 : -1
-  }
+
   get action() {
     switch (this.sign) {
       case '+':
         return 'add'
-      case '-':
+      case '=':
         return 'subtract'
       case '*':
         return 'multiply'
       case '/':
         return 'divide'
     }
-  }
-  compute(fraction) {
-    return this.value[this.action](fraction)
   }
 }
