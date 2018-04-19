@@ -18,7 +18,7 @@ export default class Fraction {
     if (this.brackets.left[0]) str += this.brackets.toString('left')
     str += `${this.value.numerator}:${this.value.denominator}`
     if (this.brackets.right[0]) str += this.brackets.toString('right')
-    if (this.sign) str += this.sign
+    if (this.sign) str += this.sign === '-' ? '=' : this.sign
     return str
   }
   compute(fraction) {
