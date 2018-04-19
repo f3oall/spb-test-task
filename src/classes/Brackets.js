@@ -6,13 +6,15 @@ export default class Brackets {
 
   toggle(pos, bracketIdx) {
     let brackets = this[pos]
+    console.log(brackets)
     if (brackets[bracketIdx]) {
       brackets.shift()
+      return -1
     } else {
       brackets.push(false)
       brackets[bracketIdx] = true
+      return 1
     }
-    return brackets[bracketIdx] ? 1 : -1
   }
   isShowingRight(fractionIdx) {
     return fractionIdx !== 0 && !this.left.includes(true)

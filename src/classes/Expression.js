@@ -42,7 +42,6 @@ export default class Expression {
       while ((match = reg1.exec(this.value))) {
         matched.push({ selector: match[0], exp: match[1] })
       }
-      console.log(matched, matched.length, this.value)
       matched.forEach(el => {
         let result = new Expression(el.exp).result.toString()
         this.value = this.value.replace(el.selector, result.slice(0, -1))
