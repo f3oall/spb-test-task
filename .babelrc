@@ -13,7 +13,8 @@
   "plugins": ["transform-runtime"],
   "env": {
     "test": {
-      "presets": ["env"]
+      "presets": ["env"],
+      "plugins": ["istanbul"]
     }
   }
 }
