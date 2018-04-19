@@ -46,7 +46,7 @@ export default {
       this.$emit('toggleBracket', e)
     },
     remove() {
-      this.$parent.fractions.fractions.splice(this.idx, 1)
+      this.$parent.fractions.remove(this.idx)
     }
   }
 }

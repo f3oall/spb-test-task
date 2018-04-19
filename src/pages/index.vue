@@ -53,14 +53,10 @@ export default {
       this.error = 'Please, close all unmatched brackets'
     },
     compute() {
-      // localStorage.setItem('fractions', JSON.stringify(this.fractions))
       if (!this.error) this.fractions.compute()
     },
     add() {
       this.fractions.add()
-    },
-    remove(idx) {
-      this.fractions.remove(idx)
     }
   }
 }
