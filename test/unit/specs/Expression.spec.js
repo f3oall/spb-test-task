@@ -97,5 +97,10 @@ describe('Expression.js', () => {
       result.value.numerator.should.equal(8821)
       result.value.denominator.should.equal(46512)
     })
+    it('should compute excess brackets', () => {
+      let result = new Expression('(((((1:2*1:2)))))').computeBrackets()
+      result.value.numerator.should.equal(1)
+      result.value.denominator.should.equal(4)
+    })
   })
 })

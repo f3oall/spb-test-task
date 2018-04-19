@@ -28,16 +28,27 @@ export default class Expression {
     return Expression.getFraction(arr, arr.length - 1, this.separator)
   }
   computeBrackets() {
-    let reg = /\(([^()]+)\)/g
+    // reg1 is a pattern for content in bracket
+    let reg1 = /\(([^()]+)\)/g
+    // reg2 is a pattern of one exp in multiple brackets
+    let reg2 = /^[(]+[^()]+[)]+$/
+    // reg2 is a pattern to remove all excess brackets
+    let reg3 = /^[(]+([^()]+)[)]+$/
     let match
     let matched = []
-    while ((match = reg.exec(this.value))) {
-      matched.push({ selector: match[0], exp: match[1] })
+    if (reg2.test(this.value)) {
+      this.value = reg3.exec(this.value)[1]
+    } else {
+      while ((match = reg1.exec(this.value))) {
+        matched.push({ selector: match[0], exp: match[1] })
+      }
+      console.log(matched, matched.length, this.value)
+      matched.forEach(el => {
+        let result = new Expression(el.exp).result.toString()
+        this.value = this.value.replace(el.selector, result.slice(0, -1))
+      })
     }
-    matched.forEach(el => {
-      let result = new Expression(el.exp).result.toString()
-      this.value = this.value.replace(el.selector, result.slice(0, -1))
-    })
+
     return new Expression(this.value).result
   }
 
