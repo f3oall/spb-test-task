@@ -3,17 +3,9 @@
     <div class="wrap">
       <div class="expression">
         <template v-for="(f, idx) in fractions.fractions">
-          <div class="fraction" :key="`f${idx}`">
-            <div v-if="idx !== fractions.length - 1 && !f.bracketRight" class="bracket left" :class="{active: f.brackets.left}" @click="toggleBracket('(', idx)">(</div>
-            <div v-if="idx > 1" class="close" @click="remove(idx)">&times;</div>
-            <square-input v-model="f.value.numerator" type="number" @input.native="compute()" />
-            <div class="bar"></div>
-            <square-input v-model="f.value.denominator" type="number" @input.native="compute()" />
-            <div v-if="idx !== 0 && !f.brackets.left" class="bracket right" :class="{active: f.brackets.right}" @click="toggleBracket(')', idx)">)</div>
-          </div>
-          <square-input class="sign" v-if="idx != fractions.length - 1 " v-model="f.sign" type="string" :key="`s${idx}`" @input.native="compute()" />
+          <expression-piece :f="f" :idx="idx" :lastIdx="fractions.length - 1" :key="idx" @toggleBracket="onToggleBracket" @update="compute()" />
         </template>
-        <div class=" sign ">=</div>
+        <div class="sign">=</div>
         <div class="fraction result ">
           <template v-if="fractions.result.numerator">
             <div class="numerator ">{{fractions.result.numerator}}</div>
@@ -36,39 +28,33 @@ import Fractions from '@/classes/Fractions'
 export default {
   data() {
     return {
-      fractionsBuffer: null,
+      fractions: null,
       error: ''
     }
   },
-  computed: {
-    fractions: {
-      get() {
-        if (this.fractionsBuffer) return this.fractionsBuffer
-        let lsItem = localStorage.getItem('fractions')
-        if (lsItem === null) {
-          let defaultArr = new Fractions()
-          defaultArr.add()
-          defaultArr.add()
-          console.log(defaultArr)
-          return defaultArr
-        }
-        return JSON.parse(lsItem)
-      },
-      set(v) {
-        this.fractionsBuffer = v
-        console.log(this.fractions)
-        localStorage.setItem('fractions', JSON.stringify(v))
-      }
+  created() {
+    let lsItem = localStorage.getItem('fractions')
+    if (lsItem === null) {
+      let defaultArr = new Fractions()
+      defaultArr.add()
+      defaultArr.add()
+      this.fractions = defaultArr
+    } else {
+      this.fractions = JSON.parse(lsItem)
     }
   },
-
   methods: {
-    toggleBracket(bracket, idx) {
-      this.error = this.fractions.toggleBracket(bracket, idx)
+    onToggleBracket(e) {
+      this.fractions.bracketsAmount[e.position] += e.increment
+      if (!this.fractions.hasUnmatchedBrackets) {
+        this.error = ''
+        return this.compute()
+      }
+      this.error = 'Please, close all unmatched brackets'
     },
     compute() {
-      this.fractions.compute()
-      console.log(this.fractions.result)
+      // localStorage.setItem('fractions', JSON.stringify(this.fractions))
+      if (!this.error) this.fractions.compute()
     },
     add() {
       this.fractions.add()
