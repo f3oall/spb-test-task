@@ -34,11 +34,11 @@ export default class Expression {
     let reg2 = /^[(]+[^()]+[)]+$/
     // reg2 is a pattern to remove all excess brackets
     let reg3 = /^[(]+([^()]+)[)]+$/
-    let match
-    let matched = []
     if (reg2.test(this.value)) {
       this.value = reg3.exec(this.value)[1]
     } else {
+      let match
+      let matched = []
       while ((match = reg1.exec(this.value))) {
         matched.push({ selector: match[0], exp: match[1] })
       }

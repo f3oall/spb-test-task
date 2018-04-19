@@ -2,6 +2,8 @@ import { Fraction as Fractional } from 'fractional'
 import Brackets from './Brackets'
 export default class Fraction {
   constructor(str, sign = null) {
+    this.brackets = new Brackets()
+    if (sign) this.sign = sign
     if (str) {
       this.value = new Fractional(...str.split(':'))
     } else {
@@ -10,8 +12,6 @@ export default class Fraction {
         denominator: ''
       }
     }
-    if (sign) this.sign = sign
-    this.brackets = new Brackets()
   }
   toString() {
     let str = ''

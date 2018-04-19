@@ -6,7 +6,6 @@ export default class Brackets {
 
   toggle(pos, bracketIdx) {
     let brackets = this[pos]
-    console.log(brackets)
     if (brackets[bracketIdx]) {
       brackets.shift()
       return -1
