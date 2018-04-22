@@ -48,3 +48,11 @@ I like `yarn`, because it's fast and create a `.lock` file.
 I have two favorite editors - VSCode and Atom. This project i made in VSCode.
 
 PS. Webpack dev config host is  `0.0.0.0` and port `5001`. It was needed because code is stored on Virtual Mashine with Ubuntu OS.
+
+# WebSocket 
+
+I realised the second part of the task. My WebSocket interface provides all required functional. All WebSocket logic is placed in the `src/classes/WebSocket` folder. I didn't use any dependencies for it, so it's simple enough.
+
+## Code splitting result
+
+!(Code Splitting Result Screenshot)[splitting_result.JPG]
