@@ -10,7 +10,6 @@ Vue.config.productionTip = false
 components.forEach(com => {
   Vue.component(com.default.name, com.default)
 })
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

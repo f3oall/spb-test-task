@@ -46,7 +46,6 @@ export default {
   methods: {
     onToggleBracket(e) {
       this.fractions.bracketsAmount[e.position] += e.increment
-      console.log(this.fractions)
       if (!this.fractions.hasUnmatchedBrackets) {
         this.error = ''
         return this.compute()
