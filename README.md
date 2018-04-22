@@ -55,4 +55,4 @@ I realised the second part of the task. My WebSocket interface provides all requ
 
 ## Code splitting result
 
-!(Code Splitting Result Screenshot)[splitting_result.JPG]
+Check out the [screenshot](screenshot.PNG)
