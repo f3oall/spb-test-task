@@ -5,7 +5,9 @@
 </template>
 <script>
 import Brackets from '@/classes/Brackets'
+import ExpressionBracket from './expression-bracket'
 export default {
+  components: { ExpressionBracket },
   name: 'expression-brackets',
   props: {
     position: {

@@ -8,8 +8,16 @@
 </template>
 
 <script>
+import SquareInput from './square-input'
+import FractionInput from './fraction-input'
+import ExpressionBrackets from './expression-brackets'
 import Fraction from '@/classes/Fraction'
 export default {
+  components: {
+    SquareInput,
+    FractionInput,
+    ExpressionBrackets
+  },
   name: 'expression-piece',
   props: {
     f: {

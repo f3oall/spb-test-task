@@ -3,19 +3,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-function page(name) {
-  try {
-    return require(`@/pages/${name}`).default
-  } catch (e) {
-    console.warn(`cant find page '${name}'`)
-    return require(`@/pages/base-default`).default
-  }
-}
-
-function route(path, component) {
-  return { path, component }
-}
-
+const Home = () => import('@/pages/index.vue')
+const Comments = () => import('@/pages/comments.vue')
 export default new Router({
-  routes: [route('/', page('index')), route('/comments', page('comments'))]
+  routes: [
+    {
+      path: '/',
+      component: Home
+    },
+    {
+      path: '/comments',
+      component: Comments
+    }
+  ]
 })

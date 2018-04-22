@@ -25,7 +25,9 @@
 
 <script>
 import Fractions from '@/classes/Fractions'
+import ExpressionPiece from '@/components/expression-piece'
 export default {
+  components: { ExpressionPiece },
   data() {
     return {
       fractions: null,
@@ -61,3 +63,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '~styles/app';
+</style>

@@ -10,7 +10,7 @@
       }
     ]
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": ["transform-runtime", "syntax-dynamic-import"],
   "env": {
     "test": {
       "presets": ["env"],

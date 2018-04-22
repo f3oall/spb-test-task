@@ -8,7 +8,9 @@
 </template>
 
 <script>
+import SquareInput from './square-input'
 export default {
+  components: { SquareInput },
   name: 'fraction-input',
   props: {
     showClose: {
